@@ -18,7 +18,7 @@ function UserManagement() {
 
     const fetchUsers = async (token) => {
         try {
-            const res = await axios.get('http://localhost:3000/api/users', {
+            const res = await axios.get('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/users', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUsers(res.data);
@@ -31,7 +31,7 @@ function UserManagement() {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            await axios.post('http://localhost:3000/api/users', newUser, {
+            await axios.post('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/users', newUser, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setNewUser({ username: '', password: '', role: 'user' });
@@ -44,7 +44,7 @@ function UserManagement() {
     const handleDelete = async (id) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:3000/api/users/${id}`, {
+            await axios.delete(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/users/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchUsers(token);
@@ -56,7 +56,7 @@ function UserManagement() {
     const handleRoleChange = async (id, role) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.put(`http://localhost:3000/api/users/${id}/role`, { role }, {
+            await axios.put(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/users/${id}/role`, { role }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchUsers(token);

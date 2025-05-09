@@ -28,7 +28,7 @@ function PolicyLibrary() {
 
     const fetchPolicies = async (token) => {
         try {
-            const res = await axios.get('http://localhost:3000/api/policies', {
+            const res = await axios.get('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/policies', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setPolicies(res.data.reverse()); // show newest first
@@ -46,7 +46,7 @@ function PolicyLibrary() {
         const token = localStorage.getItem('token');
 
         try {
-            await axios.post('http://localhost:3000/api/policies/upload', formData, {
+            await axios.post('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/policies/upload', formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -66,7 +66,7 @@ function PolicyLibrary() {
         if (!window.confirm('Are you sure you want to delete this policy?')) return;
 
         try {
-            await axios.delete(`http://localhost:3000/api/policies/${id}`, {
+            await axios.delete(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/policies/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchPolicies(token);
@@ -112,7 +112,7 @@ function PolicyLibrary() {
                             <td>{new Date(policy.uploaded_at).toLocaleString()}</td>
                             <td>
                                 <a
-                                    href={`http://localhost:3000/api/policies/download/${policy.filename}`}
+                                    href={`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/policies/download/${policy.filename}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-sm btn-success me-2"
@@ -145,7 +145,7 @@ function PolicyLibrary() {
                 <div className="mt-4">
                     <h5>Previewing: {selectedPolicy.originalname}</h5>
                     <iframe
-                        src={`http://localhost:3000/uploads/policies/${selectedPolicy.filename}`}
+                        src={`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/uploads/policies/${selectedPolicy.filename}`}
                         width="100%"
                         height="600px"
                         title="Policy Preview"

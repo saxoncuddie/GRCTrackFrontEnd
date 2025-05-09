@@ -12,7 +12,7 @@ function Login() {
         e.preventDefault();
         setError('');
         try {
-            const response = await axios.post('http://localhost:3000/api/auth/login', {
+            const response = await axios.post('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/auth/login', {
                 username,
                 password,
             });

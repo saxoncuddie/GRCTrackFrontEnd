@@ -25,7 +25,7 @@ function GRCEvents() {
 
     const fetchEvents = async (token) => {
         try {
-            const res = await axios.get('http://localhost:3000/api/grcevents', {
+            const res = await axios.get('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/grcevents', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setEvents(res.data);
@@ -39,11 +39,11 @@ function GRCEvents() {
         const token = localStorage.getItem('token');
         try {
             if (editId) {
-                await axios.put(`http://localhost:3000/api/grcevents/${editId}`, form, {
+                await axios.put(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/grcevents/${editId}`, form, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
             } else {
-                await axios.post('http://localhost:3000/api/grcevents', form, {
+                await axios.post('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/grcevents', form, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
             }
@@ -58,7 +58,7 @@ function GRCEvents() {
     const handleDelete = async (id) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:3000/api/grcevents/${id}`, {
+            await axios.delete(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/grcevents/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchEvents(token);

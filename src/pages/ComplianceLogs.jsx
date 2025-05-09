@@ -25,7 +25,7 @@ function ComplianceLogs() {
 
     const fetchLogs = async (token) => {
         try {
-            const res = await axios.get('http://localhost:3000/api/logs/compliance', {
+            const res = await axios.get('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/compliance', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setLogs(res.data);
@@ -38,7 +38,7 @@ function ComplianceLogs() {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            await axios.post('http://localhost:3000/api/logs/compliance', form, {
+            await axios.post('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/compliance', form, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setForm({ regulation: '', status: '', notes: '' });
@@ -60,7 +60,7 @@ function ComplianceLogs() {
     const handleEditSave = async (id) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.put(`http://localhost:3000/api/logs/compliance/${id}`, editingForm, {
+            await axios.put(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/compliance/${id}`, editingForm, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setEditingId(null);
@@ -74,7 +74,7 @@ function ComplianceLogs() {
         if (!window.confirm('Are you sure you want to delete this log?')) return;
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:3000/api/logs/compliance/${id}`, {
+            await axios.delete(`grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/compliance/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             fetchLogs(token);
@@ -86,7 +86,7 @@ function ComplianceLogs() {
     const handleExportCSV = async () => {
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('http://localhost:3000/api/logs/compliance/export/csv', {
+            const response = await fetch('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/compliance/export/csv', {
                 method: 'GET',
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -108,7 +108,7 @@ function ComplianceLogs() {
     const handleExportPDF = async () => {
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('http://localhost:3000/api/logs/compliance/export/pdf', {
+            const response = await fetch('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/compliance/export/pdf', {
                 method: 'GET',
                 headers: { Authorization: `Bearer ${token}` }
             });

@@ -19,7 +19,7 @@ function AuditLogs() {
 
     const fetchAuditLogs = async (token) => {
         try {
-            const res = await axios.get('http://localhost:3000/api/logs/audit', {
+            const res = await axios.get('grctrackbackend-e2b8aed8dhhmeudj.centralus-01.azurewebsites.net/api/logs/audit', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setLogs(res.data);
